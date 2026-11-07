@@ -1,0 +1,22 @@
+# Keep the repository focused on the solar inspection application.
+/*
+!/.gitignore
+!/hackathon/
+/hackathon/*
+!/hackathon/intro/
+
+# Local environments, inference artifacts, and machine settings.
+**/.venv/
+**/__pycache__/
+**/*.py[cod]
+**/.yolo/
+**/analysis_jobs/
+**/backups/
+**/server.log
+**/server.pid
+**/.env
+**/.env.*
+**/*.pt
+**/*.mp4
+**/*.video
+**/*.zip
