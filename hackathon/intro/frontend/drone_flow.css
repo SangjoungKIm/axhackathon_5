@@ -1,0 +1,54 @@
+/* 드론 역할에 한정. 기존 테마 토큰과 100% 배율을 그대로 사용한다. */
+.df-flow { min-width: 0; }
+.df-flow .df-tag { color: var(--tx2); font-size: 12px; }
+.df-steps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; flex: none; }
+.df-steps button { display: flex; align-items: center; text-align: left; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--tx2); }
+.df-steps button[aria-current] { border-color: var(--fc); background: color-mix(in oklch,var(--fc) 8%,var(--panel)); color: var(--tx); }
+.df-step-no { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid var(--line2); border-radius: 50%; flex: none; font: 500 15px 'IBM Plex Mono',monospace; }
+.df-steps button[aria-current] .df-step-no { color: var(--fc); border-color: var(--fc); }
+.df-steps small { display: block; font-size: 11px; margin-top: 4px; color: var(--tx2); }
+.df-status { border-left: 3px solid var(--warn); background: var(--panel2); padding: 8px 12px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; flex: none; }
+.df-status b { color: var(--warn); font-weight: 500; }
+.df-status span { color: var(--tx2); }
+.df-alert,.df-notice { padding: 7px 12px; border: 1px solid var(--line2); font-size: 12px; flex: none; overflow-wrap: anywhere; }
+.df-alert { color: var(--crit); }
+.df-notice { color: var(--tx); }
+.readable-stage .df-flow .df-grid { grid-template-columns: minmax(0,1fr) 360px !important; }
+.df-flow .df-preview { display: flex; align-items: center; justify-content: center; background: var(--bg); overflow: auto; }
+.df-canvas { display: flex; width: 100%; height: 100%; min-height: 180px; align-items: center; justify-content: center; container-type: size; }
+.df-image-wrap { position: relative; display: inline-block; line-height: 0; max-width: 100%; width: min(100cqw,calc(100cqh * var(--df-ratio,1))); }
+.df-image-wrap img { display: block; width: 100%; height: auto; }
+.df-image-wrap svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.df-box { cursor: pointer; --df-c: var(--fc); }
+.df-ok { --df-c: var(--ok); }.df-soil { --df-c: var(--warn); }.df-dmg { --df-c: var(--crit); }.df-und { --df-c: var(--tx2); }
+.df-box rect { fill: color-mix(in oklch,var(--df-c) 27%,transparent); stroke: var(--df-c); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.df-box text { fill: var(--tx); stroke: var(--bg); stroke-width: 3px; paint-order: stroke; font: 18px 'IBM Plex Mono',monospace; }
+.df-box.df-picked rect,.df-box:focus rect { stroke-width: 4; stroke-dasharray: 5 3; }
+.df-route { fill: none; stroke: var(--solar); stroke-width: 2; stroke-dasharray: 6 4; vector-effect: non-scaling-stroke; pointer-events: none; }
+.df-preview video { width: 100%; height: 100%; max-height: 100%; object-fit: contain; }
+.df-empty { display: flex; flex-direction: column; gap: 14px; align-items: center; justify-content: center; text-align: center; min-height: 220px; padding: 24px; color: var(--tx2); line-height: 1.7; }
+.df-empty h3 { color: var(--tx); font-size: 16px; font-weight: 500; }
+.df-empty-no { font: 40px 'IBM Plex Mono',monospace; color: var(--line2); }
+.df-flow .df-controls { display: flex; flex-direction: column; gap: 13px; }
+.df-field { display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 500; }
+.df-field input { min-width: 0; }
+.df-field small,.df-hint { color: var(--tx2); font-size: 11px; line-height: 1.6; font-weight: 400; }
+.df-file { padding: 10px 12px; border: 1px solid var(--line); background: var(--panel2); font-size: 12px; overflow-wrap: anywhere; }
+.df-file small { display: block; color: var(--tx2); margin-top: 4px; }
+.df-blocked { color: var(--warn); font-size: 12px; line-height: 1.6; }
+.df-source { display: flex; flex-direction: column; gap: 7px; border-top: 1px solid var(--line); padding-top: 12px; font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.df-source span { color: var(--tx2); }
+.df-counts { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+.df-counts > div { padding: 11px; background: var(--panel2); border: 1px solid var(--line); }
+.df-counts span { display: flex; align-items: center; gap: 6px; color: var(--tx2); font-size: 12px; }
+.df-counts i { background: var(--df-c); width: 8px; height: 8px; border-radius: 2px; }
+.df-counts b { font: 24px 'IBM Plex Mono',monospace; margin-top: 7px; display: block; }
+.df-settings { margin-top: auto; border-top: 1px solid var(--line); padding-top: 12px; }
+.df-settings summary { cursor: pointer; font-size: 12px; color: var(--tx2); }
+.df-settings-body { display: flex; flex-direction: column; gap: 12px; padding-top: 12px; }
+.df-settings-body p { font-size: 11px; color: var(--tx2); line-height: 1.7; overflow-wrap: anywhere; }
+.df-foot { color: var(--tx2); font-size: 11px; }
+.df-actions { display: flex; gap: 8px; margin-left: auto; }
+.df-flow :focus-visible { outline: 2px solid var(--fc); outline-offset: 2px; }
+.df-flow button:disabled { opacity: .45; cursor: not-allowed; }
+@media(max-width:900px) { .readable-stage .df-flow .df-grid { grid-template-columns: minmax(0,1fr) !important; } .df-steps button { padding: 8px; gap: 6px; font-size: 11px; } .df-steps small { display: none; } .df-step-no { width: 24px; height: 24px; } .df-primary { min-height: 380px !important; } .df-canvas { min-height: 220px; } }

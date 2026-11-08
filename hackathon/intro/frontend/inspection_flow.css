@@ -1,0 +1,41 @@
+/* Components for inspection 031, using the supplied AX theme and flow layout. */
+.row-obb { fill: color-mix(in oklch,var(--fc) 22%,transparent); stroke: var(--fc); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.row-route-line { stroke: var(--solar); stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
+.row-waypoint circle { fill: var(--solar); stroke: var(--bg); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.row-waypoint text { fill: #171b1e; font-family: 'IBM Plex Mono',monospace; font-weight: 600; }
+.row-waypoint-list { display: flex; gap: 6px; flex-wrap: wrap; max-height: 170px; overflow: auto; }
+.inspection-031 progress { width: 100%; height: 8px; accent-color: var(--solar); }
+.inspection-031 .df-grid { min-height: 0; }
+.inspection-031 .df-primary { min-height: 0; }
+.inspection-031 .fixed-map-canvas { width: 100%; height: 100%; min-height: 350px; position: relative; overflow: auto; }
+.fixed-map-svg { display: block; width: 100%; height: 100%; min-height: 350px; touch-action: none; }
+.fixed-row-label { font-size: 9px; fill: var(--tx3); }
+.fixed-cell { cursor: pointer; }
+.fixed-cell rect { stroke-width: 1; }
+.fixed-cell text { font: 6px 'IBM Plex Mono',monospace; fill: var(--tx2); pointer-events: none; }
+.fixed-cell.fixed-ok rect { fill: color-mix(in oklch,var(--ok) 12%,var(--panel)); stroke: var(--ok); }
+.fixed-cell.fixed-soil rect { fill: color-mix(in oklch,var(--warn) 18%,var(--panel)); stroke: var(--warn); }
+.fixed-cell.fixed-dmg rect { fill: color-mix(in oklch,var(--crit) 18%,var(--panel)); stroke: var(--crit); }
+.fixed-cell.fixed-und rect { stroke: var(--line2); }
+.fixed-cell .fixed-dirty-dot { fill: var(--warn); }
+.fixed-cell:hover rect { stroke-width: 2; }
+.fixed-cell.picked rect, .fixed-cell:focus-visible rect { stroke: var(--solar); stroke-width: 2; }
+.fixed-cell:focus-visible { outline: none; }
+.fixed-map-tools { display: flex; gap: 5px; position: absolute; top: 0; right: 0; }
+.fixed-detail-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.fixed-evidence { width: 100%; max-height: 230px; object-fit: contain; background: var(--bg); border: 1px solid var(--line); }
+.fixed-crop { width: 100%; height: 120px; object-fit: contain; background: var(--bg); border: 1px solid var(--line); }
+.inspection-031 .kv-list dd { overflow-wrap: anywhere; }
+@media(max-width:900px) {
+  .inspection-031 .df-primary { min-height: 380px; }
+  .inspection-031 .fixed-map-canvas { min-height: 350px; }
+}
+.fixed-panel-details { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+.fixed-detail-images { display: grid; grid-template-columns: minmax(0,1.7fr) minmax(0,1fr); gap: 8px; }
+.fixed-detail-images > a { display: block; min-width: 0; }
+.fixed-detail-images .fixed-evidence, .fixed-detail-images .fixed-crop { height: clamp(90px,16vh,165px); max-height: none; }
+.inspection-031 .fixed-detail-view { gap: 8px; }
+.fixed-detail-view .fixed-summary-back { align-self: flex-start; }
+.fixed-detail-view .kv-list { row-gap: 5px; font-size: 12px; }
+.fixed-detail-view .df-field { gap: 3px; }
+.fixed-detail-view .df-hint { font-size: 10px; }

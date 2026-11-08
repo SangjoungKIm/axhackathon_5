@@ -15,13 +15,18 @@ from pipeline import Inspector, save_json
 from map_service import generate_layout, effective_layout, load_session, save_review, reference_image, ensure_portal_layout
 from video_editor import editor_frame
 from result_view import result_view_file
+from row_route import RowInspector, decode_image
+from fixed_inspection import fixed_map
+from chat_service import router as chat_router
 
 ROOT = Path(__file__).resolve().parent
 JOBS = ROOT/'analysis_jobs'
 JOBS.mkdir(exist_ok=True)
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
+app.include_router(chat_router)
 app.mount('/assets',StaticFiles(directory=ROOT/'portal'),name='portal-assets')
 inspector = Inspector()
+row_inspector = RowInspector(Path('/data/panel_models/solar_row.pt'))
 executor = ThreadPoolExecutor(max_workers=1)
 meta_lock = threading.Lock()
 active_lock = threading.Lock()
@@ -75,6 +80,28 @@ def jobs():
         except ValueError:
             pass
     return sorted(records,key=lambda x:x['created_at'],reverse=True)[:20]
+
+
+@app.get('/api/inspections/INS-2026-031/fixed-map')
+def inspection_fixed_map():
+    # Deliberately independent of latest jobs, uploaded filenames and job state.
+    return JSONResponse(fixed_map(), headers={'Cache-Control': 'no-store'})
+
+
+@app.post('/api/rows/detect')
+async def detect_rows(file: UploadFile = File(...), confidence: float = Form(.25)):
+    if not .05 <= confidence <= .95:
+        raise HTTPException(422, '탐지 신뢰도는 0.05~0.95 범위입니다.')
+    try:
+        data = await file.read(8*1024*1024+1)
+        if not data or len(data) > 8*1024*1024:
+            raise HTTPException(413, '전사 이미지는 0바이트 초과, 최대 8MB입니다.')
+        image = await asyncio.to_thread(decode_image, data)
+        return await asyncio.to_thread(row_inspector.detect, image, confidence)
+    except ValueError as exc:
+        raise HTTPException(422, str(exc)) from exc
+    finally:
+        await file.close()
 
 
 @app.post('/api/analyze')

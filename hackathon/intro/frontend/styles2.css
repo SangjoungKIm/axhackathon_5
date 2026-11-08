@@ -1,0 +1,33 @@
+/* 업무 화면 보강 */
+.page .main { padding: 0; }
+.nav button { padding: 0 12px; font-size: 13.5px; white-space: nowrap; }
+.nav button.on::after { left: 9px; right: 9px; }
+.top-r { gap: 16px; }
+.flash { position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 90; background: var(--panel2); border: 1px solid var(--line2); border-radius: 6px; padding: 10px 16px; font-size: 13px; box-shadow: 0 10px 30px oklch(0 0 0 / .35); display: flex; align-items: center; animation: tin .25s ease-out; }
+.cnt2 { font-family: 'IBM Plex Mono', monospace; font-size: 11px; background: var(--crit); color: #fff; border-radius: 9px; padding: 0 6px; line-height: 17px; }
+.empty { display: flex; align-items: center; justify-content: center; }
+.rs-pagelist { overflow: auto; }
+.access-home { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 88px 100px; background: radial-gradient(ellipse at 50% 45%, color-mix(in oklch, var(--fc) 5%, transparent), transparent 62%); }
+.access-shell { width: 100%; max-width: 1560px; }
+.access-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px; }
+.access-grid .access-card { max-height: none; flex: none; }
+.access-grid .access-card { --accent: var(--fc); position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: stretch; min-width: 0; height: 344px; padding: 0; overflow: hidden; border: 1px solid var(--line2); border-radius: 16px; background: linear-gradient(145deg, color-mix(in oklch, var(--panel2) 65%, var(--panel)), var(--panel)); color: var(--tx); text-align: left; cursor: pointer; gap: 0; box-shadow: 0 18px 40px -20px color-mix(in oklch, var(--tx) 16%, transparent), inset 0 1px 0 color-mix(in oklch, var(--tx) 6%, transparent); transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease; }
+.access-card:nth-child(1) { --accent: var(--solar); }
+.access-card:nth-child(2) { --accent: var(--fc); }
+.access-card:nth-child(3) { --accent: var(--ok); }
+.access-card:nth-child(4) { --accent: var(--solar); }
+.access-card:nth-child(5) { --accent: var(--fc); }
+.access-grid .access-card:hover { border-color: color-mix(in oklch, var(--accent) 65%, var(--line2)); transform: translateY(-7px); box-shadow: 0 24px 46px -20px color-mix(in oklch, var(--accent) 23%, transparent); }
+.access-grid .access-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+.access-card-top { position: relative; flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; background: radial-gradient(ellipse at 50% 50%, color-mix(in oklch, var(--accent) 9%, transparent), transparent 70%); }
+.access-card-top::before { content: ''; position: absolute; inset: 24px; opacity: .32; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 24px 24px; mask-image: radial-gradient(ellipse, black 12%, transparent 70%); }
+.access-orbit { position: absolute; width: 154px; height: 154px; border: 1px solid color-mix(in oklch, var(--accent) 14%, transparent); border-radius: 50%; }
+.access-orbit::after { content: ''; position: absolute; inset: -17px; border-radius: 50%; border: 1px solid color-mix(in oklch, var(--accent) 6%, transparent); }
+.access-icon { position: relative; display: flex; align-items: center; justify-content: center; width: 100px; height: 100px; border-radius: 25px; color: var(--accent); background: linear-gradient(145deg, color-mix(in oklch, var(--accent) 8%, var(--panel)), var(--panel)); border: 1px solid color-mix(in oklch, var(--accent) 25%, var(--line)); box-shadow: 0 12px 30px -16px color-mix(in oklch, var(--accent) 35%, transparent), inset 0 1px 0 color-mix(in oklch, var(--tx) 8%, transparent); transition: transform .22s ease; }
+.access-card:hover .access-icon { transform: translateY(-3px); }
+.access-corner { position: absolute; top: 23px; left: 24px; width: 22px; height: 3px; border-radius: 3px; background: color-mix(in oklch, var(--accent) 70%, var(--panel)); }
+.access-card-bottom { min-height: 93px; padding: 24px; display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px solid var(--line); background: color-mix(in oklch, var(--panel) 82%, transparent); }
+.access-title { font-size: 20px; font-weight: 600; letter-spacing: -.035em; line-height: 1.5; white-space: nowrap; }
+.access-arrow { width: 31px; height: 31px; flex: 0 0 auto; border: 1px solid var(--line2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--tx3); transition: color .22s ease, border-color .22s ease; }
+.access-card:hover .access-arrow { color: var(--accent); border-color: var(--accent); }
+@media (prefers-reduced-motion: reduce) { .access-grid .access-card, .access-icon, .access-arrow { transition: none; } .access-grid .access-card:hover, .access-card:hover .access-icon { transform: none; } }

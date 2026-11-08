@@ -1,0 +1,64 @@
+/* 콘텐츠 우선 배치: 페이지 전체 세로 탐색, 표의 가로 탐색과 모달만 내부 스크롤. */
+.stage.readable-stage { overflow: hidden; }
+.readable-stage > [data-screen-label] { display: block !important; flex: 1 1 0 !important; min-height: 0; overflow-y: auto; overflow-x: hidden; scrollbar-gutter: stable; }
+.readable-stage[data-role="entry"] > [data-screen-label] { display: flex !important; }
+.readable-stage .page { flex: none; width: 100%; height: auto; min-height: 100%; overflow: visible; padding: 18px; gap: 16px; }
+.readable-stage .page .page { min-height: 0; padding: 0; }
+.readable-stage .main, .readable-stage .pgrid { flex: none; height: auto; min-height: 0; grid-template-rows: auto !important; gap: 16px; overflow: visible; }
+.readable-stage .main { padding: 0; }
+.readable-stage .panel { height: auto; min-height: 240px; overflow: visible; align-self: stretch; }
+.readable-stage .pb { flex: 1 0 auto; min-height: 0; height: auto; max-height: none; overflow-x: auto; overflow-y: visible; padding: 16px; }
+.readable-stage .ph { min-height: 48px; height: auto !important; padding: 12px 16px !important; }
+.readable-stage .ph h3 { line-height: 1.5; }
+.readable-stage .tbar { padding: 8px 0; min-height: 46px; }
+.readable-stage .t td, .readable-stage .t th { padding: 10px 12px; line-height: 1.6; }
+.readable-stage .t td { vertical-align: middle; }
+.readable-stage .actbar { min-height: 52px; padding: 12px 16px; }
+.readable-stage .actbar > div { flex-wrap: wrap; }
+.readable-stage .statbox > div { padding: 12px; }
+.readable-stage .kv-list { gap: 12px 16px; }
+.readable-stage .btn { padding: 7px 12px; }
+.readable-stage .subnav button, .readable-stage .tabs button { min-height: 40px; padding: 9px 14px; }
+.readable-stage .scroll, .readable-stage .feed, .readable-stage .invgrid { max-height: none; overflow-y: visible; }
+.readable-stage .panel .pb > .scroll { overflow-x: auto; }
+.readable-stage .page .pgrid.overview-dashboard { flex: none; overflow: visible; grid-template-columns: minmax(0,7fr) minmax(0,3fr) !important; grid-template-rows: auto 400px auto !important; gap: 18px; }
+.overview-dashboard > .kpis { min-height: 160px; }
+.overview-dashboard .kpi { padding: 16px 12px; gap: 8px; }
+.readable-stage .overview-dashboard .overview-chart > .panel,
+.readable-stage .overview-dashboard .overview-weather > .panel { height: 400px; min-height: 400px; overflow: hidden; }
+.readable-stage .overview-dashboard .overview-chart .pb,
+.readable-stage .overview-dashboard .overview-weather .pb { flex: 1 1 0; min-height: 0; overflow: hidden; }
+.overview-dashboard .overview-detail { overflow: visible; min-height: 0; }
+.overview-dashboard .overview-detail-content { flex: none; height: auto; min-height: 0; }
+.overview-dashboard .overview-detail-content > .panel { height: auto; min-height: 260px; overflow: visible; }
+.readable-stage .overview-dashboard .overview-sites > .pb { display: block; height: auto; overflow: visible; padding: 0; }
+.overview-dashboard .overview-site-scroll { flex: none; height: auto; max-height: none; overflow-x: auto; overflow-y: visible; }
+.readable-stage .overview-dashboard .overview-sites .t td { height: 56px !important; padding: 10px 12px; }
+.readable-stage .overview-dashboard .overview-sites .t th { height: 44px !important; padding: 10px 12px; }
+.readable-stage .overview-dashboard .overview-detail-content > .panel > .pb { overflow-x: auto; overflow-y: visible; }
+.readable-stage .df-flow .df-grid { grid-template-rows: auto !important; align-items: start; }
+.readable-stage .df-flow .df-primary { min-height: 620px; }
+.readable-stage .df-flow .df-preview { height: 520px; flex: none; padding: 16px; overflow: auto; }
+.df-flow .df-canvas { height: 100%; min-height: 400px; }
+.readable-stage .df-flow .df-controls { padding: 18px; gap: 18px; }
+.readable-stage .mdl { max-height: calc(100vh - 32px); overflow: hidden; }
+.readable-stage .mdl .mdl-b { flex: 1 1 auto; min-height: 0; overflow: auto; }
+.readable-stage .mdl .panel { min-height: 0; }
+.readable-stage .mdl .pb { overflow: auto; }
+@media (max-width: 1500px) {
+  .readable-stage .main, .readable-stage .pgrid { grid-template-columns: minmax(0,1.4fr) minmax(0,1fr) !important; }
+}
+@media (max-width: 1100px) {
+  .readable-stage .main, .readable-stage .pgrid, .readable-stage .df-flow .df-grid { grid-template-columns: minmax(0,1fr) !important; }
+  .readable-stage .main > *, .readable-stage .pgrid > * { grid-column: auto !important; grid-row: auto !important; }
+  .readable-stage .page .pgrid.overview-dashboard { grid-template-columns: minmax(0,1fr) !important; grid-template-rows: auto 400px 360px auto !important; }
+  .readable-stage .overview-dashboard > :is(.kpis,.overview-chart,.overview-weather,.overview-detail) { grid-column: 1 / -1 !important; }
+  .readable-stage .overview-dashboard .overview-weather > .panel { height: 360px; min-height: 360px; }
+  .overview-dashboard > .kpis { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 650px) {
+  .readable-stage .page { padding: 12px; gap: 12px; }
+  .overview-dashboard > .kpis { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .readable-stage .df-flow .df-preview { height: 360px; }
+  .df-flow .df-canvas { min-height: 280px; }
+}

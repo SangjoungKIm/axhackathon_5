@@ -1,0 +1,87 @@
+/* 발전 현황 전용. 배율·글꼴 크기·계산·공통 테마에는 관여하지 않는다. */
+.readable-stage .page .pgrid.overview-dashboard,
+.pgrid.overview-dashboard {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 3fr) !important;
+  grid-template-rows: auto clamp(230px, 28vh, 300px) minmax(0, 1fr) !important;
+  flex: 1 1 0;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  gap: 10px;
+  overflow: hidden;
+}
+.overview-dashboard > .kpis {
+  grid-column: 1 / -1 !important;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1.25fr) minmax(0, 1fr);
+  min-height: 155px;
+}
+.overview-dashboard .kpi { padding: 12px 10px; gap: 5px; }
+.overview-dashboard .kpi > label { flex-wrap: wrap; align-content: start; min-height: 32px; line-height: 1.35; }
+.overview-dashboard .kpi > label em { margin-left: 0; white-space: nowrap; }
+.overview-dashboard .ksub { flex-wrap: wrap; gap: 2px 10px; white-space: normal; }
+.overview-dashboard .ksub > span { white-space: nowrap; }
+.overview-dashboard .overview-chart { grid-column: 1 !important; min-width: 0; min-height: 0; }
+.overview-dashboard .overview-weather { grid-column: 2 !important; min-width: 0; min-height: 0; }
+.overview-dashboard .overview-chart > .panel,
+.overview-dashboard .overview-weather > .panel,
+.overview-dashboard .overview-detail-content > .panel { height: 100%; min-height: 0; overflow: hidden; }
+.readable-stage .overview-dashboard .ph { gap: 6px 12px; align-content: center; }
+.overview-dashboard .ph-r { min-width: 0; gap: 8px 14px; flex-wrap: wrap; }
+.overview-dashboard .legend { flex-wrap: wrap; gap: 6px 12px; line-height: 1.4; }
+.overview-dashboard .overview-chart .ph-r { justify-content: flex-end; }
+.overview-dashboard .overview-chart .seg { flex-shrink: 0; }
+.readable-stage .overview-dashboard .overview-chart .pb,
+.readable-stage .overview-dashboard .overview-weather .pb { overflow: hidden; }
+.overview-dashboard .overview-weather .ph-r { margin-left: 0; }
+.overview-dashboard .overview-weather .statbox { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 6px; }
+.readable-stage .overview-dashboard .overview-weather .statbox > div { padding: 5px 8px; }
+.overview-dashboard .overview-source { display: flex; align-items: center; flex-wrap: wrap; gap: 3px 14px; flex-shrink: 0; padding: 4px 6px 0 42px; color: var(--tx2); }
+.overview-dashboard .overview-gap { color: var(--warn); cursor: help; }
+.overview-dashboard .overview-source-details { position: relative; }
+.overview-dashboard .overview-source-details summary { cursor: pointer; color: var(--tx2); }
+.overview-dashboard .overview-source-details[open] > :not(summary) { position: absolute; right: 0; bottom: 100%; width: 310px; max-width: 65vw; padding: 10px; background: var(--panel2); border: 1px solid var(--line2); border-radius: 4px; z-index: 6; }
+.overview-dashboard .overview-detail { grid-column: 1 / -1 !important; display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; }
+.overview-dashboard .overview-detail-tabs { display: flex; flex: none; align-items: stretch; gap: 6px; border-bottom: 1px solid var(--line); margin-bottom: 6px; overflow-x: auto; }
+.overview-dashboard .overview-detail-tabs button { flex: none; padding: 5px 16px; color: var(--tx2); border-bottom: 2px solid transparent; white-space: nowrap; }
+.overview-dashboard .overview-detail-tabs button[aria-selected="true"] { color: var(--tx); background: var(--sel); border-bottom-color: var(--solar); font-weight: 600; }
+.overview-dashboard .overview-detail-content { flex: 1 1 0; min-height: 0; min-width: 0; }
+.overview-dashboard .overview-detail-content[hidden] { display: none !important; }
+.overview-dashboard .overview-detail-content > .panel { grid-row: auto !important; }
+.overview-dashboard .overview-detail-content > .panel > .pb { overflow: auto; }
+.overview-dashboard .overview-sites .ph-r { flex: 1; justify-content: flex-end; }
+.overview-dashboard .overview-search { display: inline-flex; gap: 8px; align-items: center; color: var(--tx2); white-space: nowrap; }
+.overview-dashboard .overview-search input { width: clamp(160px, 17vw, 280px); min-width: 0; padding: 3px 9px; border: 1px solid var(--line2); border-radius: 4px; color: var(--tx); background: var(--panel2); font: inherit; }
+.overview-dashboard .overview-site-count { white-space: nowrap; }
+.readable-stage .overview-dashboard .overview-sites > .pb { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+.overview-dashboard .overview-site-scroll { flex: 1; min-height: 0; min-width: 0; overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+.overview-dashboard .overview-sites table.t { width: 100%; min-width: 1170px; border-collapse: separate; border-spacing: 0; table-layout: auto; }
+.readable-stage .overview-dashboard .overview-sites .t th,
+.readable-stage .overview-dashboard .overview-sites .t td { padding: 3px 10px; white-space: nowrap; overflow-wrap: normal; word-break: normal; }
+.overview-dashboard .overview-sites .t th { position: sticky; top: 0; z-index: 2; background: var(--panel); height: 34px !important; box-shadow: 0 1px 0 var(--line); }
+.readable-stage .overview-dashboard .overview-sites .t tbody tr,
+.readable-stage .overview-dashboard .overview-sites .t td { height: 40px !important; }
+.overview-dashboard .overview-sites .t th:first-child,
+.overview-dashboard .overview-sites .t td:first-child { width: 180px; min-width: 180px; }
+.overview-dashboard .overview-sites .t th:last-child,
+.overview-dashboard .overview-sites .t td:last-child { min-width: 122px; }
+.overview-dashboard .overview-sites .t th:nth-child(10) { min-width: 130px; }
+.overview-dashboard .overview-sites .t th:nth-child(4) { min-width: 90px; }
+.overview-dashboard .overview-sites .overview-empty { text-align: center; color: var(--tx2); }
+.overview-dashboard :is(button, input, [tabindex]):focus-visible { outline: 2px solid var(--fc); outline-offset: -2px; }
+.overview-dashboard .overview-sites tr:focus-visible td { background: var(--sel); }
+@media (min-width: 1280px) and (max-height: 950px) {
+  .readable-stage .page .pgrid.overview-dashboard { grid-template-rows: auto 230px minmax(0, 1fr) !important; }
+  .overview-dashboard > .kpis { min-height: 135px; }
+  .overview-dashboard .kpi { padding: 5px 8px; gap: 4px; }
+}
+@media (max-width: 1279px) {
+  .overview-dashboard > .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .overview-dashboard .kpi { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 900px) {
+  .readable-stage .page .pgrid.overview-dashboard { flex: none; overflow: visible; grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: auto 310px 300px 460px !important; }
+  .readable-stage .page .pgrid.overview-dashboard > :is(.kpis, .overview-chart, .overview-weather, .overview-detail) { grid-column: 1 / -1 !important; }
+  .overview-dashboard > .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .overview-dashboard .overview-search { flex-wrap: wrap; }
+}
