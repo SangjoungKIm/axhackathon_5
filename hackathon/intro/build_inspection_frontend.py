@@ -11,6 +11,8 @@ def build():
     html = re.sub(r'<style id="inspection-031-style">.*?</style>', '', html, flags=re.S)
     html = re.sub(r'<script id="inspection-031-script">.*?</script>', '', html, flags=re.S)
     html = re.sub(r'<script id="single-site-config">.*?</script>', '', html, flags=re.S)
+    html = re.sub(r'<style id="agentstream-widget-style">.*?</style>', '', html, flags=re.S)
+    html = re.sub(r'<script id="agentstream-widget-script">.*?</script>', '', html, flags=re.S)
     css = (ROOT/'frontend/inspection_flow.css').read_text()
     script = (ROOT/'frontend/inspection_flow.js').read_text()
     config = (ROOT/'frontend/site_config.js').read_text()
@@ -33,6 +35,12 @@ def build():
     html = html.replace("setCtxSite('');", "setCtxSite('YA');")
     html = html.replace('</head>', '<style id="inspection-031-style">'+css+'</style></head>')
     html = html.replace(marker, '<script id="single-site-config">'+config+'</script><script id="inspection-031-script">'+script+'</script>'+marker)
+    chat_css = (ROOT/'frontend/chat_widget.css').read_text()
+    chat_js = (ROOT/'frontend/chat_widget.js').read_text()
+    if '</script' in chat_js.lower():
+        raise ValueError('Unexpected chat script closing tag')
+    html = html.replace('</head>', '<style id="agentstream-widget-style">'+chat_css+'</style></head>')
+    html = html.replace('</body>', '<script id="agentstream-widget-script">'+chat_js+'</script></body>')
     path.write_text(html)
 
 

@@ -17,11 +17,13 @@ from video_editor import editor_frame
 from result_view import result_view_file
 from row_route import RowInspector, decode_image
 from fixed_inspection import fixed_map
+from chat_service import router as chat_router
 
 ROOT = Path(__file__).resolve().parent
 JOBS = ROOT/'analysis_jobs'
 JOBS.mkdir(exist_ok=True)
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
+app.include_router(chat_router)
 app.mount('/assets',StaticFiles(directory=ROOT/'portal'),name='portal-assets')
 inspector = Inspector()
 row_inspector = RowInspector(Path('/data/panel_models/solar_row.pt'))
