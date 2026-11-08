@@ -1,6 +1,7 @@
 # Keep the repository focused on the solar inspection application.
 /*
 !/.gitignore
+!/README.md
 !/hackathon/
 /hackathon/*
 !/hackathon/intro/
